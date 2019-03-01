@@ -3,6 +3,7 @@ dependencies:
   chai: 4.2.0
   chai-http: 4.2.1
   cors: 2.8.5
+  dotenv: 6.2.0
   express: 4.16.4
   helmet: 3.15.1
   mocha: 5.2.0
@@ -407,6 +408,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WTKJDcn04vGeXrAqIAJuXl78j1g=
+  /dotenv/6.2.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
   /ecc-jsbn/0.1.2:
     dependencies:
       jsbn: 0.1.1
@@ -1642,6 +1649,7 @@ specifiers:
   chai: ^4.2.0
   chai-http: ^4.2.1
   cors: ^2.8.5
+  dotenv: ^6.2.0
   express: ^4.16.4
   helmet: ^3.15.1
   mocha: ^5.2.0
