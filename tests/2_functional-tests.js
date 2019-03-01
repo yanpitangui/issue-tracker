@@ -39,7 +39,7 @@ suite('Functional Tests', function () {
 					assert.exists(body._id);
 					assert.exists(body.created_on);
 					assert.exists(body.updated_on);
-					done();
+					return done(err);
 				});
 		});
 
@@ -63,7 +63,7 @@ suite('Functional Tests', function () {
 					assert.equal(body.open, true);
 					assert.exists(body.created_on);
 					assert.exists(body.updated_on);
-					done();
+					return done(err);
 				});
 		});
 
@@ -76,7 +76,7 @@ suite('Functional Tests', function () {
 				})
 				.end(function (err, res) {
 					assert.equal(res.status, 400);
-					done();
+					return done(err);
 				});
 		});
 
@@ -91,7 +91,7 @@ suite('Functional Tests', function () {
 				.end(function (err, res) {
 					assert.equal(res.text, 'no updated field sent');
 					assert.equal(res.status, 200);
-					done();
+					return done(err);
 				});
 		});
 
@@ -111,7 +111,7 @@ suite('Functional Tests', function () {
 						.end(function (err, res) {
 							assert.equal(res.text, 'successfully updated');
 							assert.equal(res.status, 200);
-							done();
+							return done();
 						});
 				});
 
@@ -133,7 +133,7 @@ suite('Functional Tests', function () {
 						.end(function (err, res) {
 							assert.equal(res.text, 'successfully updated');
 							assert.equal(res.status, 200);
-							done();
+							return done();
 						});
 				});
 
@@ -141,12 +141,11 @@ suite('Functional Tests', function () {
 
 	});
 
-    /*suite('GET /api/issues/{project} => Array of objects with issue data', function() {
+    suite('GET /api/issues/{project} => Array of objects with issue data', function() {
       
       test('No filter', function(done) {
         chai.request(server)
         .get('/api/issues/test')
-        .query({})
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.isArray(res.body);
@@ -159,20 +158,20 @@ suite('Functional Tests', function () {
           assert.property(res.body[0], 'open');
           assert.property(res.body[0], 'status_text');
           assert.property(res.body[0], '_id');
-          done();
+          return done(err);
         });
       });
       
       test('One filter', function(done) {
-        done();
+		assert(true);
+        return done();
       });
       
       test('Multiple filters (test for multiple fields you know will be in the db for a return)', function(done) {
-        done();
+        return done();
       });
       
     });
-    */
 	suite('DELETE /api/issues/{project} => text', function () {
 
 		test('No _id', function (done) {
@@ -182,7 +181,7 @@ suite('Functional Tests', function () {
 				.end(function (err, res) {
 					assert.equal(res.status, 404);
 					assert.equal(res.error.text, '_id error');
-					done();
+					return done(err);
 				});
 
 		});
@@ -203,7 +202,7 @@ suite('Functional Tests', function () {
 						.end(function (err, res) {
 							assert.equal(res.status, 200);
 							assert.equal(res.text, `deleted ${idToDelete}`);
-							done();
+							return done(err);
 						});
 				});
 

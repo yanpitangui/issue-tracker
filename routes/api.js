@@ -8,9 +8,6 @@
 
 'use strict';
 
-var expect = require('chai').expect;
-
-
 module.exports = function (app, mongoose) {
 	const Issue = require('../models/issues')(mongoose);
 	app.route('/api/issues/:project/')
@@ -18,7 +15,7 @@ module.exports = function (app, mongoose) {
 		.get(function (req, res) {
 			var project = req.params.project;
 			project.replace(/[\W_]+/g, "").toLowerCase();
-			const params = req.headers.referer.split('?');
+			const params = req.headers.referer? req.headers.referer.split('?') : '';
 			const search = params.length > 1 ? params[1] : '';
 			if (search != '') {
 				req.query = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function (key, value) { return key === "" ? value : decodeURIComponent(value) });
