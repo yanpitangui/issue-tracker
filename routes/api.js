@@ -73,7 +73,7 @@ module.exports = function(app, mongoose) {
         if (!req.body._id) {
           res.status(404).send('_id error');
         } else {
-          Issue.findOneAndDelete(req.body._id)
+          Issue.deleteOne({_id: req.body._id})
               .then((data) => {
                 if (data) {
                   res.status(200).send(`deleted ${req.body._id}`);
