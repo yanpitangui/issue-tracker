@@ -52,7 +52,7 @@ mongoose.connect(process.env.DB, {useNewUrlParser: true})
 
       const PORT = process.env.PORT || 3000;
       // Start our server and tests!
-      module.exports = app.listen(PORT, function() {
+      app.listen(PORT, function() {
         console.log('Listening on port ' + PORT);
         if (process.env.NODE_ENV === 'test') {
           console.log('Running Tests...');
@@ -72,3 +72,5 @@ mongoose.connect(process.env.DB, {useNewUrlParser: true})
       console.log(err);
       process.exit(1);
     });
+
+module.exports = app;
