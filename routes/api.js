@@ -22,6 +22,7 @@ module.exports = function(app, mongoose) {
             return key === '' ? value : decodeURIComponent(value);
           });
         }
+        req.query.project = project;
         Issue.find(req.query || null).then((issues) => {
           return res.json(issues);
         }).catch((err) => {
